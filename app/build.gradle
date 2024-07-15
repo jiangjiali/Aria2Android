@@ -1,0 +1,111 @@
+import com.github.triplet.gradle.androidpublisher.ReleaseStatus
+
+apply plugin: 'com.android.application'
+
+def isCi = System.getenv("CI") == "true"
+android {
+    namespace 'com.gianlu.aria2android'
+
+    defaultConfig {
+        compileSdk 34
+
+        applicationId "com.jiangjiali.aria2"
+        minSdkVersion 21
+        targetSdkVersion 34
+
+        versionCode 76
+        versionName "2.6.8"
+
+        // Keep abiFilter for the universalApk
+        ndk {
+            abiFilters "armeabi-v7a", 'arm64-v8a'
+        }
+
+        // Ref: https://developer.android.com/studio/build/configure-apk-splits.html
+        splits {
+            // Configures multiple APKs based on ABI.
+            abi {
+                // Enables building multiple APKs per ABI.
+                enable true
+
+                // By default all ABIs are included, so use reset() and include to specify that we only
+                // want APKs for armeabi-v7a, x86, arm64-v8a and x86_64.
+
+                // Resets the list of ABIs that Gradle should create APKs for to none.
+                reset()
+
+                // Specifies a list of ABIs that Gradle should create APKs for.
+                include "armeabi-v7a", "arm64-v8a"
+
+                // Generate a universal APK that includes all ABIs, so user who install from CI tool can use this one by default.
+                universalApk true
+            }
+        }
+    }
+
+    if (isCi) {
+        signingConfigs {
+            release {
+                storeFile file("../.github/game.keystore")
+                storePassword System.getenv("KEYSTORE_STORE_PASS")
+                keyAlias = System.getenv("KEYSTORE_KEY_ALIAS")
+                keyPassword System.getenv("KEYSTORE_KEY_PASS")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (isCi) signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions = ['main']
+    productFlavors {
+        foss {
+            dimension 'main'
+
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    shrinkResources false
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        warning 'MissingTranslation', 'Instantiatable'
+    }
+
+    playConfigs {
+        foss {
+            commit.set(false)
+            enabled.set(false)
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.leanback:leanback:1.2.0-alpha04'
+    implementation 'com.google.android.material:material:1.11.0'
+
+    implementation project(':aria2lib')
+    implementation(project(':CommonUtils')) {
+        exclude group: 'com.github.faruktoptas', module: 'FancyShowCaseView'
+    }
+}
