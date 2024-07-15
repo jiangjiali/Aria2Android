@@ -33,7 +33,7 @@ public class PreferenceActivity extends BasePreferenceActivity {
     @Nullable
     @Override
     protected String getOpenSourceUrl() {
-        return "https://github.com/devgianlu/Aria2Android";
+        return "";
     }
 
     @Nullable

@@ -197,7 +197,7 @@ public abstract class BasePreferenceActivity extends ActivityWithDialog implemen
                     .addItem(new MaterialAboutTitleItem(R.string.app_name, 0, parent.getAppIconRes())
                             .setDesc(context.getString(R.string.devgianluCopyright, Calendar.getInstance().get(Calendar.YEAR))))
                     .addItem(new MaterialAboutVersionItem(context))
-                    .addItem(new MaterialAboutActionItem(R.string.prefs_developer, R.string.devgianlu, R.drawable.baseline_person_24, () -> openLink(context, "https://gianlu.xyz")));
+                    .addItem(new MaterialAboutActionItem(R.string.prefs_developer, R.string.devgianlu, R.drawable.baseline_person_24, () -> openLink(context, "https://www.jiangjiali.com")));
 
             final String openSourceUrl = parent.getOpenSourceUrl();
             if (openSourceUrl != null) {
