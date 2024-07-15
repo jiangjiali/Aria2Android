@@ -1,5 +1,3 @@
-import com.github.triplet.gradle.androidpublisher.ReleaseStatus
-
 apply plugin: 'com.android.application'
 
 def isCi = System.getenv("CI") == "true"
