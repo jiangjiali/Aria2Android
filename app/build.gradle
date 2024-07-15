@@ -84,13 +84,6 @@ android {
         warning 'MissingTranslation', 'Instantiatable'
     }
 
-    playConfigs {
-        foss {
-            commit.set(false)
-            enabled.set(false)
-        }
-    }
-
     packagingOptions {
         jniLibs {
             useLegacyPackaging = true
