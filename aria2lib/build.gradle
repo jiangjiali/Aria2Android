@@ -81,7 +81,7 @@ tasks.register('compileAria2') {
 
         def result = exec {
             executable "$buildFile.parent/build_aria2c.sh"
-            args "7c62b06dfe7fc44c7d45443d8968f060edec6c9f"
+            args "f74f01a3adf6e61c9520b481f2219e20b882c7a6"
         }
 
         assert result.exitValue == 0
