@@ -33,3 +33,4 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/foss/release/*/**
+                aria2lib/src/main/jniLibs/*/**
