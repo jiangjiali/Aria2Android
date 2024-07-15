@@ -16,7 +16,7 @@ public class ThisApplication extends AnalyticsApplication {
     @Nullable
     @Override
     protected String getGithubProjectName() {
-        return "Aria2Android";
+        return null;
     }
 
     @Override

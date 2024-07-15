@@ -39,7 +39,7 @@ public class PreferenceActivity extends BasePreferenceActivity {
     @Nullable
     @Override
     protected String getGithubProjectName() {
-        return "Aria2Android";
+        return null;
     }
 
     @Override
