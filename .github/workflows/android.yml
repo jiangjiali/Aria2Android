@@ -42,4 +42,8 @@ jobs:
         with:
           name: app
           path: app/build/outputs/apk/foss/release/*/**
-                aria2lib/src/main/jniLibs/*/**
+      - name: 上传库文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: jniLibs
+          path: aria2lib/src/main/jniLibs/*/**
