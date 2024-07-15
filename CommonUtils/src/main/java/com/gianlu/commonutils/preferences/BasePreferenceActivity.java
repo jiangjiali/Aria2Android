@@ -197,7 +197,7 @@ public abstract class BasePreferenceActivity extends ActivityWithDialog implemen
                     .addItem(new MaterialAboutTitleItem(R.string.app_name, 0, parent.getAppIconRes())
                             .setDesc(context.getString(R.string.devgianluCopyright, Calendar.getInstance().get(Calendar.YEAR))))
                     .addItem(new MaterialAboutVersionItem(context))
-                    .addItem(new MaterialAboutActionItem(R.string.prefs_developer, R.string.devgianlu, R.drawable.baseline_person_24, () -> openLink(context, "https://www.jiangjiali.com")));
+                    .addItem(new MaterialAboutActionItem(R.string.prefs_developer, R.string.devgianlu, R.drawable.baseline_person_24, () -> openLink(context, "https://www.jiangjiali.com/d/87")));
 
             final String openSourceUrl = parent.getOpenSourceUrl();
             if (openSourceUrl != null) {
@@ -257,23 +257,23 @@ public abstract class BasePreferenceActivity extends ActivityWithDialog implemen
                             .build())
                     .build();
 
-            MaterialAboutCard.Builder donateBuilder = new MaterialAboutCard.Builder()
-                    .title(R.string.rateDonate);
-            if (FossUtils.hasGoogleBilling()) {
-                donateBuilder.addItem(new MaterialAboutActionItem(R.string.rateApp, R.string.leaveReview, R.drawable.baseline_rate_review_24, () -> {
-                    try {
-                        openLink(context, "market://details?id=" + context.getPackageName());
-                    } catch (ActivityNotFoundException ex) {
-                        openLink(context, "https://play.google.com/store/apps/details?id=" + context.getPackageName());
-                    }
-                })).addItem(new MaterialAboutActionItem(R.string.donateGoogle, R.string.donateGoogleSummary, R.drawable.baseline_attach_money_24, () -> {
-                    if (parent != null) parent.donate();
-                }));
-            }
+            // MaterialAboutCard.Builder donateBuilder = new MaterialAboutCard.Builder()
+            //         .title(R.string.rateDonate);
+            // if (FossUtils.hasGoogleBilling()) {
+            //     donateBuilder.addItem(new MaterialAboutActionItem(R.string.rateApp, R.string.leaveReview, R.drawable.baseline_rate_review_24, () -> {
+            //         try {
+            //             openLink(context, "market://details?id=" + context.getPackageName());
+            //         } catch (ActivityNotFoundException ex) {
+            //             openLink(context, "https://play.google.com/store/apps/details?id=" + context.getPackageName());
+            //         }
+            //     })).addItem(new MaterialAboutActionItem(R.string.donateGoogle, R.string.donateGoogleSummary, R.drawable.baseline_attach_money_24, () -> {
+            //         if (parent != null) parent.donate();
+            //     }));
+            // }
 
-            if (!FossUtils.hasGoogleBilling() || !parent.disableOtherDonationsOnGooglePlay()) {
-                donateBuilder.addItem(new MaterialAboutActionItem(R.string.donate, R.string.donate_summary, R.drawable.baseline_money_24, () -> openLink(context, "https://www.buymeacoffee.com/devgianlu")));
-            }
+            // if (!FossUtils.hasGoogleBilling() || !parent.disableOtherDonationsOnGooglePlay()) {
+            //     donateBuilder.addItem(new MaterialAboutActionItem(R.string.donate, R.string.donate_summary, R.drawable.baseline_money_24, () -> openLink(context, "https://www.buymeacoffee.com/jiangjiali")));
+            // }
 
             MaterialAboutCard.Builder tutorialBuilder = null;
             if (parent.hasTutorial()) {
@@ -293,7 +293,7 @@ public abstract class BasePreferenceActivity extends ActivityWithDialog implemen
             MaterialAboutList.Builder listBuilder = new MaterialAboutList.Builder();
             listBuilder.addCard(developerBuilder.build());
             if (preferencesBuilder != null) listBuilder.addCard(preferencesBuilder.build());
-            listBuilder.addCard(donateBuilder.build());
+            // listBuilder.addCard(donateBuilder.build());
             if (tutorialBuilder != null) listBuilder.addCard(tutorialBuilder.build());
             listBuilder.addCard(logsBuilder.build());
             return listBuilder.build();
