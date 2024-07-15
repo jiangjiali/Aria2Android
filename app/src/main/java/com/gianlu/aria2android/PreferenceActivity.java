@@ -33,7 +33,7 @@ public class PreferenceActivity extends BasePreferenceActivity {
     @Nullable
     @Override
     protected String getOpenSourceUrl() {
-        return "";
+        return null;
     }
 
     @Nullable
