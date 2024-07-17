@@ -2,10 +2,6 @@ name: Android CI
 
 on:
   workflow_dispatch:
-    inputs:
-      tag_name:
-        description: 'tag name'
-        required: true
 
 jobs:
   build:
