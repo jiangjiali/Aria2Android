@@ -48,7 +48,7 @@ public final class Aria2Service extends Service implements Aria2.MessageListener
     public static final int MESSAGE_STOP = 3;
     private static final int MESSAGE_START = 4;
     private static final String CHANNEL_ID = "aria2service";
-    private static final String SERVICE_NAME = "Service Aria2";
+    private static final String SERVICE_NAME = "Aria2c服务";
     private static final int NOTIFICATION_ID = 69;
     private static final String TAG = Aria2Service.class.getSimpleName();
     private final HandlerThread serviceThread = new HandlerThread("aria2-service");
@@ -225,10 +225,10 @@ public final class Aria2Service extends Service implements Aria2.MessageListener
         }
 
         RemoteViews layout = new RemoteViews(getPackageName(), R.layout.aria2lib_custom_notification);
-        layout.setTextViewText(R.id.customNotification_runningTime, "Running time: " + CommonUtils.timeFormatter((System.currentTimeMillis() - startTime) / 1000));
-        layout.setTextViewText(R.id.customNotification_pid, "PID: " + update.pid());
+        layout.setTextViewText(R.id.customNotification_runningTime, "运行时间: " + CommonUtils.timeFormatter((System.currentTimeMillis() - startTime) / 1000));
+        layout.setTextViewText(R.id.customNotification_pid, "进程ID: " + update.pid());
         layout.setTextViewText(R.id.customNotification_cpu, "CPU: " + update.cpu() + "%");
-        layout.setTextViewText(R.id.customNotification_memory, "Memory: " + CommonUtils.dimensionFormatter(update.rss(), false));
+        layout.setTextViewText(R.id.customNotification_memory, "内存: " + CommonUtils.dimensionFormatter(update.rss(), false));
         layout.setImageViewResource(R.id.customNotification_icon, provider.launcherIcon());
         layout.setImageViewResource(R.id.customNotification_stop, R.drawable.baseline_clear_24);
         layout.setOnClickPendingIntent(R.id.customNotification_stop, getStopServiceIntent());
