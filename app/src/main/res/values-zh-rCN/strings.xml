@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Aria2</string>
+    <string name="app_name">Aria2c</string>
     <string name="logs">日志</string>
     <string name="permissionRequest">权限请求</string>
     <string name="writeStorageMessage">Aria2需要使用外部储存来保存你下载的文件。</string>

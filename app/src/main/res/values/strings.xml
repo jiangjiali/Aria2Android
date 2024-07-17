@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aria2</string>
+    <string name="app_name">Aria2c</string>
     <string name="logs">Logs</string>
     <string name="permissionRequest">Permission request</string>
     <string name="writeStorageMessage">Aria2 needs to write the external storage to save your downloaded files.</string>
